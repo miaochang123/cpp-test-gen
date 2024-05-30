@@ -1,0 +1,27 @@
+test:
+    read_reflect
+val:
+    rs1val:
+        sig_ref: [1,2,3]
+        len: [1,16]
+        data_ref: [0xF0000800,0xF0000810,0xF0000820]
+        constructor: 'rs1val_construct(fields_dict)'
+    rs2val:
+        mode_addr: [0,2,9]
+        target_addr: [0xF0000400, 0xF0000410, 0xF0000420]
+        constructor: 'rs2val_construct(fields_dict)'
+    immval:
+        action: [2]
+        token: [1,2,3]
+        target: [0xE]
+        test:
+            a: [1]
+            b: [2]
+            constructor: 'test_constructor(fields_dict)'
+        constructor: 'imm_constructor(fields_dict)'
+template:
+        subscribe: ['sig_ref','data_ref','b']
+        tmpregcnt: 2
+        macro: |-
+               //tmpreg0:$tmpreg0  tmpreg1:$tmpreg1 op1:$op1 op2:$op2 val1:$val1 val2:$val2 sig_ref:$sig_ref data_ref:$data_ref b:$b
+               read_reflect($tmpreg0,$tmpreg1,$op1,$op2,$val1,$val2,$immval,$sig_ref,$data_ref,$b,$index)

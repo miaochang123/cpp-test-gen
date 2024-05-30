@@ -1,0 +1,9 @@
+This script used to generate unitest for our cpp instruction in rfpc.
+the whole project can be divided into three part:
+1. unitest template file <cpp.cgf> write in yaml format
+2. test_env.h to provide test macro used in cpp.cgf
+3. util.py will product unitests according to cpp.cgf
+
+how to:
+write your cpp.cgf
+python3 util.py >> cpp.S

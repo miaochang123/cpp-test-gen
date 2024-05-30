@@ -1,0 +1,20 @@
+test:
+    read_reflect
+val_fields:
+        sig_ref: [0,1,2,3,4]
+        len: [1,16]
+        data_ref: [0xF0000800,0xF0000810,0xF0000820]
+        mode_addr: [0,2,9]
+        imb_port: [0,1]
+        cpp_core_number: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        target_addr: [0xF0000400, 0xF0000410, 0xF0000420]
+        action: [2]
+        token: [1,2,3]
+        target: [0xE]
+        constraints:
+            constraint_imb_cppcore: ['imb_port','cpp_core_number']
+template:
+        tmpregcnt: 2
+        macro: |-
+               //tmpreg0:$tmpreg0  tmpreg1:$tmpreg1 op1:$op1 op2:$op2
+               read_reflect_V2($tmpreg0,$tmpreg1,$op1,$op2,$index,$fileds)
